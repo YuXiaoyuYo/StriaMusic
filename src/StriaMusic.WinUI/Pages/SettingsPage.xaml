@@ -1,0 +1,73 @@
+﻿<Page
+    x:Class="StriaMusic.WinUI.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StriaMusic.WinUI.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d"
+    NavigationCacheMode="Enabled">
+    <Page.Resources>
+        <!--  These styles can be referenced to create a consistent SettingsPage layout  -->
+
+        <!--  Spacing between cards  -->
+        <x:Double x:Key="SettingsCardSpacing">4</x:Double>
+
+        <!--  Style (inc. the correct spacing) of a section header  -->
+        <!-- ReSharper disable once Xaml.StaticResourceNotResolved -->
+        <Style x:Key="SettingsSectionHeaderTextBlockStyle"
+               BasedOn="{StaticResource BodyStrongTextBlockStyle}"
+               TargetType="TextBlock">
+            <Style.Setters>
+                <Setter Property="Margin" Value="1,30,0,6" />
+            </Style.Setters>
+        </Style>
+    </Page.Resources>
+    <ScrollViewer>
+        <Grid>
+            <StackPanel MaxWidth="1000"
+                        Margin="30,0"
+                        HorizontalAlignment="Stretch"
+                        Spacing="{StaticResource SettingsCardSpacing}">
+                <StackPanel.ChildrenTransitions>
+                    <EntranceThemeTransition FromVerticalOffset="50" />
+                    <RepositionThemeTransition IsStaggeringEnabled="False" />
+                </StackPanel.ChildrenTransitions>
+                <TextBlock MaxWidth="1000"
+                           Margin="0,24,0,0"
+                           Style="{StaticResource TitleTextBlockStyle}"
+                           Text="Settings" />
+                <!-- 'About' section  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
+                           Text="About" />
+                <controls:SettingsExpander Description="© 2025 Yu Xiaoyu"
+                                           Header="Stria Music"
+                                           HeaderIcon="{ui:BitmapIcon Source=ms-appx:///Assets/Logo/computer_disk_3d.png}">
+                    <TextBlock IsTextSelectionEnabled="True"
+                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                               Text="1.0.0" />
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard Header="Stria Music is licensed under the AGPLv3 license." />
+                        <controls:SettingsCard Header="Powered by .Net 9.0.5 &amp; WinUI 3" />
+                        <controls:SettingsCard HorizontalContentAlignment="Left"
+                                               ContentAlignment="Left">
+                            <StackPanel Margin="-12,0,0,0"
+                                        Orientation="Vertical">
+                                <HyperlinkButton Content="Link 1" />
+                                <HyperlinkButton Content="Link 2" />
+                                <HyperlinkButton Content="Link 3" />
+                            </StackPanel>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+                <HyperlinkButton Margin="0,8,0,0"
+                                 Content="Send feedback"
+                                 NavigateUri="https://www.microsoft.com" />
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+
+
+</Page>

@@ -1,0 +1,45 @@
+﻿<Window
+    x:Class="StriaMusic.WinUI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:view="using:StriaMusic.WinUI.Views"
+    xmlns:local="using:StriaMusic.WinUI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d"
+    SizeChanged="MainWindow_SizeChanged">
+    <Grid>
+        <NavigationView x:Name="RootNavigationView"
+                        Margin="0,0,0,120"
+                        BackRequested="RootNavigationView_OnBackRequested"
+                        ItemInvoked="RootNavigationView_OnItemInvoked"
+                        DisplayModeChanged="RootNavigationView_OnDisplayModeChanged">
+            <NavigationView.Resources>
+                <!-- ReSharper disable Xaml.RedundantResource -->
+                <!--  This top margin is the height of the custom titleBar  -->
+                <Thickness x:Key="NavigationViewContentMargin">0,48,0,0</Thickness>
+                <Thickness x:Key="NavigationViewMinimalContentMargin">0,48,0,0</Thickness>
+                <Thickness x:Key="NavigationViewContentGridBorderThickness">1,1,0,1</Thickness>
+                <!--  This is the rounded corner on the Top left of the L Pattern  -->
+                <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,8</CornerRadius>
+                <!-- ReSharper restore Xaml.RedundantResource -->
+            </NavigationView.Resources>
+            <NavigationView.AutoSuggestBox>
+                <AutoSuggestBox QueryIcon="Find" PlaceholderText="Search" />
+            </NavigationView.AutoSuggestBox>
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Home" Content="HomePage" Tag="HomePage" />
+            </NavigationView.MenuItems> 
+            <Frame x:Name="MainFrame" CacheSize="64" Navigated="MainFrame_OnNavigated" x:FieldModifier="Public" />
+        </NavigationView>
+        <StackPanel x:Name="AppTitleBar" 
+                    Orientation="Horizontal"
+                    VerticalAlignment="Top"
+                    Height="48">
+            <Image Source="Assets/Logo/computer_disk_flat.svg" Width="20" Height="20" VerticalAlignment="Center" />
+            <TitleBar Title="{x:Bind Title}" />
+        </StackPanel>
+        <view:BottomPlayerView x:Name="BottomPlayerView" VerticalAlignment="Bottom" />
+    </Grid>
+</Window>

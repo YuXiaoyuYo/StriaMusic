@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "StriaMusic.WinUI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "StriaMusic.WinUI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
