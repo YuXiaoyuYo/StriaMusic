@@ -95,7 +95,7 @@ public sealed partial class MainWindow
     private void MainWindow_MoveAndResizeFromPrevious()
     {
         // 设置窗口最小大小
-        ((OverlappedPresenter)AppWindow.Presenter).PreferredMinimumHeight = 400;
+        ((OverlappedPresenter)AppWindow.Presenter).PreferredMinimumHeight = 600;
         ((OverlappedPresenter)AppWindow.Presenter).PreferredMinimumWidth = 500;
         
         // 从上次关闭的位置和大小恢复窗口
